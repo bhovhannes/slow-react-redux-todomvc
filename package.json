@@ -14,8 +14,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@neutrinojs/jest": "^9.0.0-rc.0",
-    "@neutrinojs/node": "^9.0.0-rc.0",
+    "@neutrinojs/jest": "9.0.0-rc.0",
+    "@neutrinojs/node": "9.0.0-rc.0",
     "@neutrinojs/react": "9.0.0-rc.0",
     "classnames": "2.2.6",
     "eslint": "5.12.1",
