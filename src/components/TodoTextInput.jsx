@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { slowdownRandom } from '../slowdown';
+import { slowdown } from '../slowdown';
 
 export default class TodoTextInput extends Component {
   static propTypes = {
@@ -37,7 +37,7 @@ export default class TodoTextInput extends Component {
   };
 
   render() {
-    slowdownRandom();
+    slowdown();
     return (
       <input
         className={classnames({

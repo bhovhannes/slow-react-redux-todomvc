@@ -6,14 +6,7 @@ import {
   COMPLETE_ALL_TODOS,
   CLEAR_COMPLETED
 } from '../constants/ActionTypes';
-import {
-  slowdownHuge,
-  slowdownLarge,
-  slowdownMedium,
-  slowdownRandom,
-  slowdownSmall,
-  slowdownTiny
-} from '../slowdown';
+import { slowdown } from '../slowdown';
 
 const initialState = [
   {
@@ -26,7 +19,7 @@ const initialState = [
 export default function todos(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
-      slowdownTiny();
+      slowdown();
       return [
         ...state,
         {
@@ -37,21 +30,21 @@ export default function todos(state = initialState, action) {
       ];
 
     case DELETE_TODO:
-      slowdownMedium();
+      slowdown();
       return state.filter(todo => todo.id !== action.id);
 
     case EDIT_TODO:
-      slowdownHuge();
+      slowdown();
       return state.map(todo => (todo.id === action.id ? { ...todo, text: action.text } : todo));
 
     case COMPLETE_TODO:
-      slowdownLarge();
+      slowdown();
       return state.map(todo =>
         todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
       );
 
     case COMPLETE_ALL_TODOS:
-      slowdownSmall();
+      slowdown();
       const areAllMarked = state.every(todo => todo.completed);
       return state.map(todo => ({
         ...todo,
@@ -59,7 +52,7 @@ export default function todos(state = initialState, action) {
       }));
 
     case CLEAR_COMPLETED:
-      slowdownRandom();
+      slowdown();
       return state.filter(todo => todo.completed === false);
 
     default:
